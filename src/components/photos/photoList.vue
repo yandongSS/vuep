@@ -89,7 +89,7 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 *{
     touch-action: pan-y;
 }
-img[lazy='loading']{
+img[lazy="loading"]{
 	width: 40px;
 	height: 300px;
 	margin: auto;

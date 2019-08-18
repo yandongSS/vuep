@@ -6,13 +6,17 @@ Vue.use(VueRouter)
 import './lib/mui/css/mui.min.css'
 import './lib/mui/js/mui.min.js'
 
-import {Header,Swipe,SwipeItem,Button,Lazyload} from 'mint-ui'
+/* import {Header,Swipe,SwipeItem,Button,Lazyload} from 'mint-ui'
 Vue.component(Header.name,Header)
 Vue.component(Swipe.name,Swipe)
 Vue.component(SwipeItem.name,SwipeItem)
 Vue.component(Button.name,Button)
 Vue.component(Button.name,Button)
-Vue.use(Lazyload)
+Vue.use(Lazyload) */
+
+import MintUi from "mint-ui"
+Vue.use(MintUi)
+import 'mint-ui/lib/style.css'
 
 
 import axios from 'axios';
