@@ -8,6 +8,7 @@ var htmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: path.join(__dirname, './src/main.js'), // 入口文件
   output: { // 指定输出选项
+    publicPath:'/',
     path: path.join(__dirname, './dist'), // 输出路径
     filename: 'bundle.js' // 指定输出文件的名称
   },
