@@ -2,7 +2,7 @@
 <template>
   <div class>
     <mt-swipe class="swiper">
-      <mt-swipe-item v-for="item,index in arr" :key="index">
+      <mt-swipe-item v-for="(item,index) in arr" :key="index">
         <img :src="item.img" />
       </mt-swipe-item>
     </mt-swipe>
@@ -14,9 +14,8 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <router-link to="#">
-          <span class="mui-icon mui-icon-email">
-            <span class="mui-badge">5</span>
+        <router-link to="/home/photos">
+          <span class="mui-icon mui-icon-email"> 
           </span>
           <div class="mui-media-body">图片分享</div>
         </router-link>

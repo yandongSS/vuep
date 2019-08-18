@@ -6,6 +6,7 @@ const cart=()=>import('./components/cart.vue')
 const profile=()=>import('./components/profile.vue')
 const news=()=>import('./components/news/newlist.vue')
 const newsInfo=()=>import('./components/news/newsInfo.vue')
+const photoList=()=>import('./components/photos/photoList.vue')
 
 // 3. 创建路由对象
 var router = new VueRouter({
@@ -31,6 +32,9 @@ var router = new VueRouter({
   },{
     path:'/home/news/:id',
     component:newsInfo
+  },{
+    path:'/home/photos',
+    component:photoList
   }
   ],
   linkActiveClass:'mui-active',

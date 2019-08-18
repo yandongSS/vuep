@@ -3,8 +3,8 @@
 <div class=''>
     <h3>发表评论</h3>
     <hr>
-    <textarea placeholder="请输入要BB的内容（最多吐槽120字）" maxlength="120"></textarea>
-    <mt-button type="primary" size="large">发表评论</mt-button>
+    <textarea placeholder="请输入要BB的内容（最多吐槽120字）" maxlength="120" v-model="msg"></textarea>
+    <mt-button type="primary" size="large" @click="postComment">发表评论</mt-button>
     <div class="cmt-list" v-for="(item,i) in comments" :key="item.add_time">
         <div class="cmt-item">
             <div class="cmt-title">
@@ -23,7 +23,7 @@
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-import {Toast} from 'mint-ui'
+import {Toast} from 'mint-ui';
 export default {
 //import引入的组件需要注入到对象中才能使用
 components: {},
@@ -31,7 +31,8 @@ data() {
 //这里存放数据
 return {
     comments:[],
-    pageindex:1
+    pageindex:1,
+    msg:''
 }
 },
 props:["id"],
@@ -53,6 +54,26 @@ methods: {
     getMore(){
         this.pageindex++
         this.getComments()
+    },
+    postComment(){
+        if(this.msg.trim().length==0){
+            return Toast('评论不能为空！')
+        }
+        this.$axios.post('api/postcomment/'+this.$route.params.id,
+            {
+                content:this.msg.trim()
+             }).then(res=>{
+                 if(res.data.status===0){
+                     let cmt={
+                              user_name:'匿名用户',
+                              add_time:Date.now(),
+                              content:this.msg.trim()
+                     }
+                     this.comments.unshift(cmt)
+                     this.msg=""
+
+                 }
+             })
     }
 },
 //生命周期 - 创建完成（可以访问当前this实例）
