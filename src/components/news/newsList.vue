@@ -42,8 +42,7 @@ export default {
     getNewsList() {
       this.$axios.get("api/getnewslist").then(res => {
         if (res.data.status === 0) {
-          this.newsList = res.data.message;
-          console.log(res.data.message);
+          this.newsList = res.data.message
         } else {
           Toast("获取新闻失败！");
         }

@@ -13,13 +13,13 @@
 
 			</div>
 	<ul class="plist">
-		<li v-for="item in list" :key="item.id">
+		<router-link :to="'/home/photoInfo/' + item.id"  v-for="item in list" :key="item.id" tag="li">
 			<img v-lazy="item.img_url">
 			<div class="info">
 				<h3 class="title">{{item.title}}</h3>
 				<div class="content">{{item.zhaiyao}}</div>
 			</div>
-		</li>
+		</router-link>
 	</ul>
 
 
@@ -93,6 +93,7 @@ img[lazy="loading"]{
 	width: 40px;
 	height: 300px;
 	margin: auto;
+	border-radius: 7px;
 }
 .plist{
 	margin: 0;

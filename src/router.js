@@ -4,9 +4,12 @@ const home=()=>import('./components/home.vue')
 const vip=()=>import('./components/vip.vue')
 const cart=()=>import('./components/cart.vue')
 const profile=()=>import('./components/profile.vue')
-const news=()=>import('./components/news/newlist.vue')
+const news=()=>import('./components/news/newsList.vue')
 const newsInfo=()=>import('./components/news/newsInfo.vue')
 const photoList=()=>import('./components/photos/photoList.vue')
+const photoInfo=()=>import('./components/photos/photoInfo.vue')
+const goods=()=>import ('./components/goods/goodsList.vue')
+const goodInfo=()=>import('./components/goods/goodInfo.vue')
 
 // 3. 创建路由对象
 var router = new VueRouter({
@@ -35,6 +38,15 @@ var router = new VueRouter({
   },{
     path:'/home/photos',
     component:photoList
+  },{
+    path:'/home/photoInfo/:id',
+    component:photoInfo
+  },{
+    path:'/home/goods',
+    component:goods
+  },{
+    path:'/home/goodInfo/:id',
+    component:goodInfo
   }
   ],
   linkActiveClass:'mui-active',

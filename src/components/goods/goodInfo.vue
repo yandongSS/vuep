@@ -1,33 +1,21 @@
 <!--  -->
 <template>
-<div class='newsCont'>
-    <h2>{{newsInfo.title}}</h2>
-    <p class="subTitle">
-        <span>发表时间：{{newsInfo.add_time | dateFormat}}</span>
-        <span>点击{{newsInfo.click}}次</span>
-    </p>
-    <hr>
-    <div class="content" v-html="newsInfo.content"></div>
-    <comment :id="this.id"></comment>
+<div class=''>
+    商品详情页
 </div>
 </template>
 
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-import comment from '../childcomponent/comment.vue'
-import { Toast } from "mint-ui";
 
 export default {
 //import引入的组件需要注入到对象中才能使用
-components: {
-    comment
-},
+components: {},
 data() {
 //这里存放数据
 return {
-   id: this.$route.params.id,
-   newsInfo:{}
+
 };
 },
 //监听属性 类似于data概念
@@ -36,20 +24,11 @@ computed: {},
 watch: {},
 //方法集合
 methods: {
-    getNewsInfo(){
-        this.$axios.get('/api/getnew/'+this.id).then(res=>{
-            if(res.data.status===0){
-                this.newsInfo= res.data.message[0]
-                
-            }else{
-                Toast('获取新闻详情失败！')
-            }
-        })
-    }
+
 },
 //生命周期 - 创建完成（可以访问当前this实例）
 created() {
-    this.getNewsInfo()
+
 },
 //生命周期 - 挂载完成（可以访问DOM元素）
 mounted() {
@@ -65,22 +44,4 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 }
 </script>
 <style scoped>
-.newsCont{
-    padding: 0 8px;
-}
-h2{
-    text-align: center;
-    font-size: 15px;
-    color: red;
-    margin: 10px 0;
-}
-.subTitle{
-    font-size: 12px;
-    color: #226aff;
-    display: flex;
-    justify-content: space-between;
-}
-
-
-
 </style>

@@ -98,7 +98,8 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
         font-size:18px;
     }
     textarea{
-        height: 150px;
+        height: 110px;
+        font-size: 13px;
     }
     .cmt-list{
         margin: 20px 0;
