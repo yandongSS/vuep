@@ -10,6 +10,8 @@ const photoList=()=>import('./components/photos/photoList.vue')
 const photoInfo=()=>import('./components/photos/photoInfo.vue')
 const goods=()=>import ('./components/goods/goodsList.vue')
 const goodInfo=()=>import('./components/goods/goodInfo.vue')
+const goodDec=()=>import('./components/goods/goodDec.vue')
+const goodComment=()=>import('./components/goods/goodComment.vue')
 
 // 3. 创建路由对象
 var router = new VueRouter({
@@ -46,7 +48,16 @@ var router = new VueRouter({
     component:goods
   },{
     path:'/home/goodInfo/:id',
-    component:goodInfo
+    component:goodInfo,
+    name:'goodInfo'
+  },{
+    path:'/home/goodDec/:id',
+    component:goodDec,
+    name:'dec'
+  },{
+    path:'/home/goodComment/:id',
+    component:goodComment,
+    name:'comment'
   }
   ],
   linkActiveClass:'mui-active',

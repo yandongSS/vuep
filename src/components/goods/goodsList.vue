@@ -3,7 +3,7 @@
 
    
     <div class="good-list">
-      <router-link :to="'/home/goodInfo/'+item.id" class="good-item" v-for="item in goodList" :key="item.id">
+      <!-- <router-link :to="'/home/goodInfo/'+item.id" class="good-item" v-for="item in goodList" :key="item.id">
         <img :src="item.img_url" :alt="item.title">
         <p>{{item.title}}</p>
         <div class="detail">
@@ -16,7 +16,25 @@
                 <span>剩{{item.stock_quantity}}件</span>
             </div>
         </div>
-      </router-link>
+      </router-link> -->
+      <div :to="'/home/goodInfo/'+item.id" 
+            class="good-item" 
+            v-for="item in goodList" 
+            :key="item.id" 
+            @click="goinfo(item.id)">
+        <img :src="item.img_url" :alt="item.title">
+        <p>{{item.title}}</p>
+        <div class="detail">
+            <div class="price">
+                <span class="now">￥{{item.sell_price}}</span>
+                <span class="old">￥{{item.market_price}}</span>
+            </div>
+            <div class="hot">
+                <span>热卖中</span>
+                <span>剩{{item.stock_quantity}}件</span>
+            </div>
+        </div>
+      </div>
       <mt-button type="primary" size="large" plain class="button" @click="getMoreGoods">加载更多..</mt-button>
     </div>
 
@@ -50,6 +68,11 @@ methods: {
     getMoreGoods(){
         this.pageindex++
         this.getGoods()
+    },
+    goinfo(id){
+        // this.$router.push('/home/goodInfo/'+id)
+         //this.$router.push({path:'/home/goodInfo/'+id})
+         this.$router.push({name:"goodInfo",params:{id}})
     }
 },
 //生命周期 - 创建完成（可以访问当前this实例）

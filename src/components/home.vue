@@ -1,11 +1,12 @@
 <!--  -->
 <template>
   <div class>
-    <mt-swipe class="swiper">
+    <!-- <mt-swipe class="swiper">
       <mt-swipe-item v-for="(item,index) in arr" :key="index">
         <img :src="item.img" />
       </mt-swipe-item>
-    </mt-swipe>
+    </mt-swipe> -->
+    <swiper :lunboList="lunboList" :isFull="true"></swiper> 
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <router-link to="/home/news">
@@ -70,13 +71,16 @@
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
 // import axios from "axios";
+import swiper from './childcomponent/swiper.vue'
 export default {
   //import引入的组件需要注入到对象中才能使用
-  components: {},
+  components: {
+    swiper
+  },
   data() {
     //这里存放数据
     return {
-      arr: []
+      lunboList: []
     };
   },
   //监听属性 类似于data概念
@@ -88,8 +92,8 @@ export default {
     get() {
       this.$axios.get("api/getlunbo").then(
         res => {
-          const ar = res.data.message;
-          this.arr = ar;
+          const ar = res.data.message
+          this.lunboList = ar
         }
       );
     }
@@ -110,11 +114,5 @@ export default {
 };
 </script>
 <style scoped>
-.swiper {
-  height: 200px;
-}
-img {
-  width: 100%;
-  height: 100%;
-}
+
 </style>
